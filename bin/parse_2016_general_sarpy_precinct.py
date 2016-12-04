@@ -13,7 +13,7 @@ import clarify
 
 county = 'Sarpy'
 
-url = 'http://results.enr.clarityelections.com/NE/Sarpy/54217/149572/en/summary.html'
+url = 'http://results.enr.clarityelections.com/NE/Sarpy/64652/184054/en/summary.html'
 
 election_type = 'general'
 

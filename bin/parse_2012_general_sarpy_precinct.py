@@ -13,7 +13,7 @@ import clarify
 
 county = 'Sarpy'
 
-url = 'http://results.enr.clarityelections.com/NE/Sarpy/54217/149572/en/summary.html'
+url = 'http://results.enr.clarityelections.com/NE/Sarpy/43953/113868/en/summary.html'
 
 election_type = 'general'
 
@@ -86,22 +86,23 @@ def clarify_sarpy():
     # to filter out "total" rows, uncomment the next line
     # results = [x for x in results if x['precinct']]
 
+
     with open(filename, 'wb') as outfile:
         f = unicodecsv.writer(outfile, encoding='utf-8')
 
         # headers
         f.writerow(['county', 'precinct', 'office', 'district', 'party',
-                    'candidate', 'votes', 'election_day', 'early_voting',
+                    'candidate', 'votes', 'election_night', 'absentee',
                     'provisional'])
 
         for row in results:
-            total_votes = row['Early Voting'] + row['Provisionals'] \
-                          + row['Election Day']
+            total_votes = row['Absentee'] + row['Provisional'] \
+                          + row['Election Night']
 
             f.writerow([row['county'], row['precinct'], row['office'],
                        row['district'], row['party'], row['candidate'],
-                       total_votes, row['Election Day'],
-                       row['Early Voting'], row['Provisionals']])
+                       total_votes, row['Election Night'],
+                       row['Absentee'], row['Provisional']])
 
 
 def parse_office(office_text):
